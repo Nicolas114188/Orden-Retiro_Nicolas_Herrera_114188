@@ -23,15 +23,53 @@ namespace OrdenRetiroApp
         public FrmOrdenRetiro()
         {
             InitializeComponent();
-            servicio= new ServicioOrden();
-            ordenRetiro= new OrdenRetiro();
-
+            servicio = new ServicioOrden();
+            ordenRetiro = new OrdenRetiro();
         }
         private void FrmOrdenRetiro_Load(object sender, EventArgs e)
         {
             textFecha.Text = DateTime.Today.ToShortDateString();
+            CargarCombo();
 
+        }
+        private void CargarCombo()
+        {
+            cboMaterial.DataSource = servicio.TraerMaterial();
+            cboMaterial.ValueMember = "codigo";
+            cboMaterial.DisplayMember = "nombre";
+        }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                /*foreach () 
+                {
+
+                }*/
+                Material material=(Material)cboMaterial.SelectedItem;
+                int cant = int.Parse(nudCantidad.Value.ToString());
+                if (material.Stock < cant) 
+                {
+                    MessageBox.Show("No hay en Stock suficiente","Información",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    return;
+                }
+                DetalleOrden detalle = new DetalleOrden(material,cant);
+                ordenRetiro.AgregarDetalle(detalle);
+            }
+            else 
+            {
+                MessageBox.Show("Se a ingresado incorrecto los datos","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                return;
+            }
+        }
+
+        private bool Validar()
+        {
+            bool val = true;
+            if(cboMaterial.SelectedIndex==-1 || string.IsNullOrEmpty(textResponsable.Text))
+                val = false;
+            return val;
         }
     }
 }

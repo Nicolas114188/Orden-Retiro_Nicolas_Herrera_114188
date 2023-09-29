@@ -66,6 +66,14 @@ namespace OrdenRetiroApp.Datos.Implementacion
         {
             List<Material> lMateriales = new List<Material>();
             DataTable data = HelperDao.ObtenerInstancia().Consultar("Consultar_Materiales");
+            foreach(DataRow fila in data.Rows) 
+            {
+                int cod = int.Parse(fila["codigo"].ToString());
+                string nom= fila["nombre"].ToString();
+                int stock = int.Parse(fila["stock"].ToString());
+                Material material = new Material(cod,nom,stock);
+                lMateriales.Add(material);
+            }
             return lMateriales;
         }
     }
