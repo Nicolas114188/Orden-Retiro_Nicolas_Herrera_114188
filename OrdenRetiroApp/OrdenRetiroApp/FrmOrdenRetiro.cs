@@ -11,22 +11,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OrdenRetiroApp.Servicio.Interfaz;
 using OrdenRetiroApp.Servicio.Implementacion;
+using OrdenRetiroApp.Entidades;
 
 namespace OrdenRetiroApp
 {
     public partial class FrmOrdenRetiro : Form
     {
-        private IServicio servicio = null;
+        private IServicioOrden servicio = null;
+        OrdenRetiro ordenRetiro = null;
 
         public FrmOrdenRetiro()
         {
             InitializeComponent();
-            servicio = new Servicio();
+            servicio= new ServicioOrden();
+            ordenRetiro= new OrdenRetiro();
+
         }
         private void FrmOrdenRetiro_Load(object sender, EventArgs e)
         {
             textFecha.Text = DateTime.Today.ToShortDateString();
-            textCantidad.Text = "1";
+
 
         }
     }

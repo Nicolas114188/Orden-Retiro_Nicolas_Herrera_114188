@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 
 namespace OrdenRetiroApp.Servicio.Implementacion
 {
-    public class Servicio : IServicio
+    public class ServicioOrden : IServicioOrden
     {
         private IOrdenRetiroDao dao;
-        public Servicio() 
+        public ServicioOrden()
         {
             dao = new OrdenRetiroDao();
         }
-
         public int CrearOrdenRetiro(OrdenRetiro orden)
         {
             return dao.Crear(orden);

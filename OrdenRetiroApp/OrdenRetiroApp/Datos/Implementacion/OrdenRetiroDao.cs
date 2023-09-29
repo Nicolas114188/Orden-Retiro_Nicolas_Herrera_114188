@@ -12,7 +12,7 @@ namespace OrdenRetiroApp.Datos.Implementacion
 {
     public class OrdenRetiroDao : IOrdenRetiroDao
     {
-        public int Crear(OrdenRetiro oOrdenRetiro)
+        public int Crear(OrdenRetiro orden)
         {
             int nroOrden = 0;
             SqlConnection cnn = HelperDao.ObtenerInstancia().ObtenerConexion();
@@ -26,7 +26,7 @@ namespace OrdenRetiroApp.Datos.Implementacion
                 cmd.Transaction = t;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SP_INSERTAR_ORDEN";
-                cmd.Parameters.AddWithValue("@responsable", oOrdenRetiro.Responsable);
+                cmd.Parameters.AddWithValue("@responsable", orden.Responsable);
                 SqlParameter pararmetro = new SqlParameter();
                 pararmetro.ParameterName = "@nro";
                 pararmetro.SqlDbType = SqlDbType.Int;
@@ -36,7 +36,7 @@ namespace OrdenRetiroApp.Datos.Implementacion
                 nroOrden = (int)pararmetro.Value;
                 int nroDetalle = 1;
                 SqlCommand cmdDetalle;
-                foreach (DetalleOrden detalle in oOrdenRetiro.Detalles)
+                foreach (DetalleOrden detalle in orden.Detalles)
                 {
                     cmdDetalle = new SqlCommand("SP_INSERTAR_DETALLES", cnn, t);
                     cmdDetalle.CommandType = CommandType.StoredProcedure;
@@ -54,9 +54,9 @@ namespace OrdenRetiroApp.Datos.Implementacion
                 if (t != null)
                     t.Rollback();
             }
-            finally 
+            finally
             {
-                if(cnn!=null&&cnn.State==ConnectionState.Open)
+                if (cnn != null && cnn.State == ConnectionState.Open)
                     cnn.Close();
             }
             return nroOrden;

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace OrdenRetiroApp.Servicio.Interfaz
 {
-    public interface IServicio
+    public interface IServicioOrden
     {
         List<Material> TraerMaterial();
-        int CrearOrdenRetiro(OrdenRetiro orden);
+        int CrearOrdenRetiro(OrdenRetiro ordenRetiro);
     }
 }

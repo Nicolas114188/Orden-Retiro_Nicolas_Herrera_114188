@@ -10,7 +10,6 @@ namespace OrdenRetiroApp.Datos.Interfaz
     public interface IOrdenRetiroDao
     {
         List<Material> ObtenerMateriales();
-        int Crear(OrdenRetiro oOrdenRetiro);
-
+        int Crear(OrdenRetiro orden);
     }
 }

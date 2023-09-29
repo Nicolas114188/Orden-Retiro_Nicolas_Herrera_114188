@@ -42,8 +42,9 @@
             btnAceptar = new Button();
             btnCancelar = new Button();
             textFecha = new TextBox();
-            textCantidad = new TextBox();
+            nudCantidad = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -159,19 +160,21 @@
             textFecha.Size = new Size(95, 23);
             textFecha.TabIndex = 0;
             // 
-            // textCantidad
+            // nudCantidad
             // 
-            textCantidad.Location = new Point(310, 123);
-            textCantidad.Name = "textCantidad";
-            textCantidad.Size = new Size(100, 23);
-            textCantidad.TabIndex = 3;
+            nudCantidad.Location = new Point(294, 125);
+            nudCantidad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudCantidad.Name = "nudCantidad";
+            nudCantidad.Size = new Size(120, 23);
+            nudCantidad.TabIndex = 10;
+            nudCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // FrmOrdenRetiro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(615, 447);
-            Controls.Add(textCantidad);
+            Controls.Add(nudCantidad);
             Controls.Add(textFecha);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
@@ -187,6 +190,7 @@
             Text = "Registrar Orden Retiro";
             Load += FrmOrdenRetiro_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,6 +210,6 @@
         private DataGridViewTextBoxColumn ColCantidad;
         private DataGridViewButtonColumn ColAcciones;
         private TextBox textFecha;
-        private TextBox textCantidad;
+        private NumericUpDown nudCantidad;
     }
 }
