@@ -43,23 +43,24 @@ namespace OrdenRetiroApp
         {
             if (Validar())
             {
-                /*foreach () 
+                foreach (DataGridView row in dgvDetalleOrden.Rows)
                 {
-
-                }*/
-                Material material=(Material)cboMaterial.SelectedItem;
-                int cant = int.Parse(nudCantidad.Value.ToString());
-                if (material.Stock < cant) 
-                {
-                    MessageBox.Show("No hay en Stock suficiente","Información",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Este material ya está detallado...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
-                DetalleOrden detalle = new DetalleOrden(material,cant);
+                Material material = (Material)cboMaterial.SelectedItem;
+                int cant = int.Parse(nudCantidad.Value.ToString());
+                if (material.Stock < cant)
+                {
+                    MessageBox.Show("No hay en Stock suficiente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                DetalleOrden detalle = new DetalleOrden(material, cant);
                 ordenRetiro.AgregarDetalle(detalle);
             }
-            else 
+            else
             {
-                MessageBox.Show("Se a ingresado incorrecto los datos","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Se a ingresado incorrecto los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
         }
@@ -67,7 +68,7 @@ namespace OrdenRetiroApp
         private bool Validar()
         {
             bool val = true;
-            if(cboMaterial.SelectedIndex==-1 || string.IsNullOrEmpty(textResponsable.Text))
+            if (cboMaterial.SelectedIndex == -1 || string.IsNullOrEmpty(textResponsable.Text))
                 val = false;
             return val;
         }

@@ -31,7 +31,7 @@
             label1 = new Label();
             label2 = new Label();
             textResponsable = new TextBox();
-            dataGridView1 = new DataGridView();
+            dgvDetalleOrden = new DataGridView();
             ColCodigo = new DataGridViewTextBoxColumn();
             ColMaterial = new DataGridViewTextBoxColumn();
             ColStock = new DataGridViewTextBoxColumn();
@@ -43,7 +43,7 @@
             btnCancelar = new Button();
             textFecha = new TextBox();
             nudCantidad = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetalleOrden).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             SuspendLayout();
             // 
@@ -72,18 +72,18 @@
             textResponsable.Size = new Size(351, 23);
             textResponsable.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvDetalleOrden
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColCodigo, ColMaterial, ColStock, ColCantidad, ColAcciones });
-            dataGridView1.Location = new Point(43, 176);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(495, 150);
-            dataGridView1.TabIndex = 5;
+            dgvDetalleOrden.AllowUserToAddRows = false;
+            dgvDetalleOrden.AllowUserToDeleteRows = false;
+            dgvDetalleOrden.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetalleOrden.Columns.AddRange(new DataGridViewColumn[] { ColCodigo, ColMaterial, ColStock, ColCantidad, ColAcciones });
+            dgvDetalleOrden.Location = new Point(43, 176);
+            dgvDetalleOrden.Name = "dgvDetalleOrden";
+            dgvDetalleOrden.ReadOnly = true;
+            dgvDetalleOrden.RowTemplate.Height = 25;
+            dgvDetalleOrden.Size = new Size(495, 150);
+            dgvDetalleOrden.TabIndex = 5;
             // 
             // ColCodigo
             // 
@@ -181,7 +181,7 @@
             Controls.Add(btnAceptar);
             Controls.Add(btnAgregar);
             Controls.Add(cboMaterial);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvDetalleOrden);
             Controls.Add(textResponsable);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -190,7 +190,7 @@
             Name = "FrmOrdenRetiro";
             Text = "Registrar Orden Retiro";
             Load += FrmOrdenRetiro_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetalleOrden).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -200,7 +200,7 @@
         private Label label1;
         private Label label2;
         private TextBox textResponsable;
-        private DataGridView dataGridView1;
+        private DataGridView dgvDetalleOrden;
         private ComboBox cboMaterial;
         private Button btnAgregar;
         private Button btnAceptar;
