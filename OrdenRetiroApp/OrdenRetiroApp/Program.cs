@@ -1,3 +1,5 @@
+using OrdenRetiroApp.Servicio;
+
 namespace OrdenRetiroApp
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace OrdenRetiroApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmOrdenRetiro());
+            Application.Run(new FrmOrdenRetiro(new FabricaServicioImp()));
         }
     }
 }

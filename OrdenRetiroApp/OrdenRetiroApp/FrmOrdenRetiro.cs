@@ -20,10 +20,10 @@ namespace OrdenRetiroApp
         private IServicioOrden servicio = null;
         OrdenRetiro ordenRetiro = null;
 
-        public FrmOrdenRetiro()
+        public FrmOrdenRetiro(Servicio.FabricaServicio fabrica)
         {
             InitializeComponent();
-            servicio = new ServicioOrden();
+            servicio = fabrica.CrearServicio();
             ordenRetiro = new OrdenRetiro();
         }
         private void FrmOrdenRetiro_Load(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace OrdenRetiroApp
                 ordenRetiro.NroOrden = servicio.CrearOrdenRetiro(ordenRetiro);
                 if (ordenRetiro.NroOrden != 0)
                 {
-                    MessageBox.Show("Se registró con éxito la Orden de Retiro: "+ordenRetiro.NroOrden.ToString(), "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Se registró con éxito la Orden de Retiro: " + ordenRetiro.NroOrden.ToString(), "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Dispose();
                 }
                 else
